@@ -48,7 +48,7 @@ enc=OrdinalEncoder()
 x_train=enc.fit_transform(x_train)
 x_test=enc.fit_transform(x_test)
 #model
-def  model(dtrain,ttarget,dtest,ttest,models):
+def  modeling(dtrain,ttarget,dtest,ttest,models):
     scores=[]
     acc=[]
     cross=[]
@@ -67,7 +67,7 @@ model_1=KNeighborsClassifier(n_neighbors=10,weights="distance")
 model_2=MultinomialNB()
 model_3=RandomForestClassifier(n_estimators=5)
 models=[model_1,model_2,model_3]
-print(model(x_train,y_train,x_test,y_test,models))
+print(modeling(x_train,y_train,x_test,y_test,models))
 
 
     
