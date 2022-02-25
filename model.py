@@ -14,25 +14,25 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 #understanding data
 data_train=pd.read_csv("train.csv")
 #print(data_train.describe().to_string())
-print(data_train.shape)
-print(data_train.columns)
+#print(data_train.shape)
+#print(data_train.columns)
 #sns.displot(data_train['Survived'])
-plt.show()
+#plt.show()
 #imputing missing values
 data_train=data_train.drop(labels=['PassengerId','Cabin','Name','Ticket'],axis=1)
 data_train['Age'].fillna(data_train['Age'].mean(),inplace=True)
 data_train['Embarked'].fillna(data_train['Embarked'].mode()[0],inplace=True)
 missing_values=data_train.isnull().sum()
-print(missing_values)
+#print(missing_values)
 
 #visualize
 corr=data_train.corr()
 sns.heatmap(corr,annot=True)
-plt.show()
+#plt.show()
 sns.barplot(x=data_train['Pclass'],y=data_train['Survived'])
-plt.show()
+#plt.show()
 sns.displot(data_train['Survived'])
-plt.show()
+#plt.show()
 
 #feature engineering
 data_train["Relatives"]=data_train["SibSp"]+data_train["Parch"]
@@ -42,7 +42,7 @@ data_train=data_train.drop(labels=["SibSp","Parch"],axis=1)
 target=data_train.Survived 
 data_t=data_train.drop(labels='Survived',axis=1)
 x_train,x_test,y_train,y_test=train_test_split(data_t,target,test_size=0.33)
-print(x_train.columns)
+#print(x_train.columns)
 #preprocessing
 enc=OrdinalEncoder()
 x_train=enc.fit_transform(x_train)
@@ -67,7 +67,7 @@ model_1=KNeighborsClassifier(n_neighbors=10,weights="distance")
 model_2=MultinomialNB()
 model_3=RandomForestClassifier(n_estimators=5)
 models=[model_1,model_2,model_3]
-print(modeling(x_train,y_train,x_test,y_test,models))
+#print(modeling(x_train,y_train,x_test,y_test,models))
 
 
     
